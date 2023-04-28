@@ -6,4 +6,5 @@
  *
  */
 module proyectoIntegradorJava {
+	requires java.sql;
 }

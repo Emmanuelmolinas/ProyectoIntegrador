@@ -1,18 +1,32 @@
 package proyectoIntegradorJava;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Main {
 	public static void main(String[] args) {
+		 conexion db = new conexion();
+	        Connection conn = db.conectarMySQL();
+
+	        if (conn != null) {
+	            System.out.println("Conexión exitosa");
+	            try {
+	                conn.close();
+	            } catch (SQLException e) {
+	                e.printStackTrace();
+	            }
+	        }
+        
 		ronda ronda = new ronda(1);	
 		
-		String archRonda1 = "C:\\Users\\Usuario\\eclipse-workspace\\proyectoIntegradorJava\\src\\proyectoIntegradorJava\\Archivos\\Resultado.xlsm";
+		String archRonda1 = "C:\\Users\\Usuario\\eclipse-workspace\\proyectoIntegradorJava\\src\\proyectoIntegradorJava\\Archivos\\Resultado.xlsx";
 		
 		ArrayList<partido> partidos1 = ronda.leerArchivo(archRonda1);
 		
 		pronostico pronosticos = new pronostico ();
 		
-		String archPronostico1 = "C:\\Users\\Usuario\\eclipse-workspace\\proyectoIntegradorJava\\src\\proyectoIntegradorJava\\Archivos\\Pronostico.xlsm";
+		String archPronostico1 = "C:\\Users\\Usuario\\eclipse-workspace\\proyectoIntegradorJava\\src\\proyectoIntegradorJava\\Archivos\\Pronostico.xlsx";
 
 		ArrayList<partido> pronosticos1 = pronosticos.leerArchivo_usuario(archPronostico1);
 		
